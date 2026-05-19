@@ -19,6 +19,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -96,11 +100,11 @@ input {
 
 .header-cta {
   padding: 10px 16px;
-  color: var(--blue);
-  background: var(--soft-blue);
+  color: var(--white);
+  background: var(--blue);
   border-radius: 999px;
   font-weight: 700;
-  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.22);
 }
 
 .hero {
@@ -128,21 +132,24 @@ h3 {
   color: var(--navy);
   font-family: "Geist", "Segoe UI", "Inter", sans-serif;
   letter-spacing: 0;
-  line-height: 1.05;
+  line-height: 1.08;
 }
 
 h1 {
   max-width: 760px;
-  font-size: clamp(2.75rem, 6.2vw, 6.25rem);
+  font-size: clamp(2.55rem, 5.8vw, 5.6rem);
   letter-spacing: 0;
+  font-weight: 650;
 }
 
 h2 {
   font-size: clamp(2rem, 3.6vw, 3.6rem);
+  font-weight: 650;
 }
 
 h3 {
   font-size: 1.25rem;
+  font-weight: 650;
 }
 
 .hero-subtitle {
@@ -664,6 +671,22 @@ h3 {
   background: linear-gradient(135deg, #ffffff 0%, #f3fbf8 48%, var(--bg) 100%);
 }
 
+.compact-quote {
+  display: block;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+.compact-quote h1,
+.compact-quote p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.compact-quote p {
+  max-width: 620px;
+}
+
 .quote-hero h1 {
   max-width: 880px;
   font-size: clamp(2.35rem, 5vw, 5rem);
@@ -697,6 +720,38 @@ h3 {
 
 .cotizador-section {
   padding-top: 42px;
+}
+
+.quote-flow-section {
+  min-height: 740px;
+  padding: 28px clamp(16px, 4vw, 72px) 86px;
+  background:
+    linear-gradient(135deg, rgba(239, 246, 255, 0.92), rgba(236, 253, 245, 0.54)),
+    var(--bg);
+}
+
+.quote-flow {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 28px 90px rgba(15, 23, 42, 0.11);
+  backdrop-filter: blur(18px);
+}
+
+.flow-topline {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.compact-brand {
+  white-space: nowrap;
 }
 
 .engine-preview {
@@ -771,7 +826,10 @@ h3 {
 }
 
 .question-card {
-  margin-top: 26px;
+  display: grid;
+  min-height: 440px;
+  margin-top: 0;
+  padding: 34px 38px 0;
 }
 
 .question-step {
@@ -784,17 +842,18 @@ h3 {
 .question-step.active {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
+  align-content: start;
   animation: fadeSlide 320ms ease both;
 }
 
 .question-step legend {
   grid-column: 1 / -1;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   color: var(--navy);
   font-family: "Geist", "Segoe UI", "Inter", sans-serif;
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  font-weight: 650;
 }
 
 .select-card {
@@ -811,14 +870,15 @@ h3 {
 .select-card span {
   display: flex;
   align-items: center;
-  min-height: 74px;
-  padding: 18px;
+  min-height: 58px;
+  padding: 14px 15px;
   background: rgba(248, 250, 252, 0.76);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 14px;
   color: var(--navy);
-  font-weight: 900;
-  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  font-weight: 750;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .select-card:hover span {
@@ -827,26 +887,46 @@ h3 {
 }
 
 .visual-option span {
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  column-gap: 12px;
+  align-items: center;
 }
 
 .visual-option small {
+  grid-column: 2;
   color: var(--muted);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 550;
+}
+
+.visual-option i {
+  display: grid;
+  grid-row: 1 / span 2;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--blue);
+  background: var(--soft-blue);
+  border-radius: 11px;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .select-card input:checked + span {
-  background: var(--soft-blue);
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
   border-color: rgba(37, 99, 235, 0.55);
-  box-shadow: 0 12px 34px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 12px 34px rgba(37, 99, 235, 0.13), 0 0 0 4px rgba(37, 99, 235, 0.07);
 }
 
 .form-actions {
   justify-content: space-between;
-  margin-top: 24px;
+  align-self: end;
+  margin: 30px -38px 0;
+  padding: 18px 26px;
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid var(--line);
 }
 
 .amount-step.active {
@@ -856,10 +936,10 @@ h3 {
 .amount-control {
   display: grid;
   gap: 18px;
-  padding: 28px;
+  padding: 24px;
   background: #f8fafc;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .amount-control input[type="range"] {
@@ -870,8 +950,8 @@ h3 {
 .amount-control output {
   color: var(--navy);
   font-family: "Geist", "Segoe UI", "Inter", sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -885,16 +965,17 @@ h3 {
 
 .loading-state {
   display: grid;
-  min-height: 320px;
+  min-height: 520px;
   place-items: center;
   text-align: center;
+  padding: 42px;
 }
 
 .loading-state p {
   margin: 18px 0;
   color: var(--navy);
   font-size: 1.18rem;
-  font-weight: 900;
+  font-weight: 750;
 }
 
 .pulse-orbit {
@@ -1241,6 +1322,10 @@ h3 {
     align-items: stretch;
     flex-direction: column;
   }
+
+  .quote-flow {
+    width: min(100%, 760px);
+  }
 }
 
 @media (max-width: 720px) {
@@ -1275,6 +1360,35 @@ h3 {
 
   .question-step.active {
     grid-template-columns: 1fr;
+  }
+
+  .compact-quote {
+    padding-top: 48px;
+  }
+
+  .quote-flow-section {
+    padding: 18px 14px 58px;
+  }
+
+  .flow-topline {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .question-card {
+    min-height: 500px;
+    padding: 24px 18px 0;
+  }
+
+  .form-actions {
+    margin-right: -18px;
+    margin-left: -18px;
+    padding: 14px 18px;
+  }
+
+  .visual-option span {
+    grid-template-columns: 32px 1fr;
   }
 
   .site-footer {

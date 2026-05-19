@@ -22,77 +22,64 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="index.html#perfiles">Perfiles</a>
+        <a href="index.html#beneficios">Beneficios</a>
         <a href="#resultados">Resultados</a>
         <a href="index.html#faq">FAQ</a>
       </nav>
-      <a class="header-cta" href="index.html">Home</a>
+      <a class="header-cta" href="#cotizador">Cotizar ahora</a>
     </header>
 
     <main>
-      <section class="quote-hero onboarding-hero">
+      <section class="quote-hero onboarding-hero compact-quote">
         <div>
           <p class="eyebrow">Onboarding financiero premium</p>
-          <h1>Hagamos matching con opciones compatibles.</h1>
+          <h1>Encuentra opciones compatibles con tu negocio.</h1>
           <p>
-            Responde una pregunta por pantalla. Al final verás recomendaciones
-            personalizadas, salud financiera estimada y una explicación clara.
+            Responde unas preguntas rápidas y simularemos alternativas de financiamiento.
           </p>
-        </div>
-        <div class="quote-aside">
-          <span>Calma financiera</span>
-          <strong>Sin presión, sin consulta de historial.</strong>
-          <p>Primero entendemos tu negocio. Después mostramos opciones útiles.</p>
         </div>
       </section>
 
-      <section class="comparator-section cotizador-section" id="cotizador">
-        <div class="comparator-shell">
-          <div class="comparator-intro">
-            <p class="eyebrow">Matching engine</p>
-            <h2>Una asesoría inteligente, no un formulario.</h2>
-            <p>
-              El sistema simula perfiles de financiamiento según tipo de negocio,
-              facturación, antigüedad e historial crediticio.
-            </p>
-            <div class="engine-preview">
-              <span>Perfil A: bancos tradicionales</span>
-              <span>Perfil B: fintechs rápidas</span>
-              <span>Perfil C: opciones flexibles</span>
-            </div>
-          </div>
-
-          <div class="comparator-panel" aria-live="polite">
+      <section class="quote-flow-section" id="cotizador">
+        <div class="quote-flow">
+          <div class="flow-topline">
+            <a class="brand compact-brand" href="index.html" aria-label="ClaraCapital inicio">
+              <span class="brand-mark">C</span>
+              <span>ClaraCapital</span>
+            </a>
             <div class="progress-wrap">
               <span id="progressLabel">Pregunta 1 de 7</span>
               <div class="progress-track"><span id="progressBar"></span></div>
             </div>
+          </div>
 
             <form id="compareForm" class="question-card">
               <fieldset class="question-step active" data-step="0">
                 <legend>¿Qué tipo de negocio tienes?</legend>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Restaurante" checked />
-                  <span><b>Restaurante</b><small>Comida, cafetería o dark kitchen</small></span>
+                  <span><i>R</i><b>Restaurante</b><small>Comida, cafetería o dark kitchen</small></span>
                 </label>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Ecommerce" />
-                  <span><b>Ecommerce</b><small>Tienda online o marketplace</small></span>
+                  <span><i>E</i><b>Ecommerce</b><small>Tienda online o marketplace</small></span>
                 </label>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Servicios" />
-                  <span><b>Servicios</b><small>Consultoría, operación o agencia</small></span>
+                  <span><i>S</i><b>Servicios</b><small>Consultoría, operación o agencia</small></span>
                 </label>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Retail" />
-                  <span><b>Retail</b><small>Tienda física o distribución</small></span>
+                  <span><i>RT</i><b>Retail</b><small>Tienda física o distribución</small></span>
                 </label>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Manufactura" />
-                  <span><b>Manufactura</b><small>Producción, equipo o insumos</small></span>
+                  <span><i>M</i><b>Manufactura</b><small>Producción, equipo o insumos</small></span>
                 </label>
                 <label class="select-card visual-option">
                   <input type="radio" name="business" value="Otro" />
-                  <span><b>Otro</b><small>Un perfil diferente de PYME</small></span>
+                  <span><i>+</i><b>Otro</b><small>Un perfil diferente de PYME</small></span>
                 </label>
               </fieldset>
 
@@ -229,7 +216,6 @@
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       <section class="results-section" id="resultados" hidden>
