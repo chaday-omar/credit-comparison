@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotizador | ClaraCapital</title>
+    <meta
+      name="description"
+      content="Cotizador inteligente para encontrar opciones de financiamiento compatibles con tu negocio."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230F172A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='34' font-weight='700' fill='white'%3EC%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="cotizador">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="ClaraCapital inicio">
+        <span class="brand-mark">C</span>
+        <span>ClaraCapital</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="#resultados">Resultados</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <a class="header-cta" href="index.html">Home</a>
+    </header>
+
+    <main>
+      <section class="quote-hero">
+        <div>
+          <p class="eyebrow">Cotizador inteligente</p>
+          <h1>Hagamos matching con opciones compatibles.</h1>
+          <p>
+            Responde una pregunta por pantalla. Al final verás recomendaciones
+            personalizadas, salud financiera estimada y una explicación clara.
+          </p>
+        </div>
+        <div class="quote-aside">
+          <span>Sin compromiso</span>
+          <strong>No afecta tu historial</strong>
+          <p>Primero mostramos valor. Solo pedimos datos si quieres guardar tus opciones.</p>
+        </div>
+      </section>
+
+      <section class="comparator-section cotizador-section" id="cotizador">
+        <div class="comparator-shell">
+          <div class="comparator-intro">
+            <p class="eyebrow">Matching engine</p>
+            <h2>Una asesoría inteligente, no un formulario.</h2>
+            <p>
+              El sistema simula perfiles de financiamiento según tipo de negocio,
+              facturación, antigüedad e historial crediticio.
+            </p>
+            <div class="engine-preview">
+              <span>Perfil A: bancos tradicionales</span>
+              <span>Perfil B: fintechs rápidas</span>
+              <span>Perfil C: opciones flexibles</span>
+            </div>
+          </div>
+
+          <div class="comparator-panel" aria-live="polite">
+            <div class="progress-wrap">
+              <span id="progressLabel">Pregunta 1 de 7</span>
+              <div class="progress-track"><span id="progressBar"></span></div>
+            </div>
+
+            <form id="compareForm" class="question-card">
+              <fieldset class="question-step active" data-step="0">
+                <legend>¿Qué tipo de negocio tienes?</legend>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Restaurante" checked />
+                  <span><b>Restaurante</b><small>Comida, cafetería o dark kitchen</small></span>
+                </label>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Ecommerce" />
+                  <span><b>Ecommerce</b><small>Tienda online o marketplace</small></span>
+                </label>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Servicios" />
+                  <span><b>Servicios</b><small>Consultoría, operación o agencia</small></span>
+                </label>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Retail" />
+                  <span><b>Retail</b><small>Tienda física o distribución</small></span>
+                </label>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Manufactura" />
+                  <span><b>Manufactura</b><small>Producción, equipo o insumos</small></span>
+                </label>
+                <label class="select-card visual-option">
+                  <input type="radio" name="business" value="Otro" />
+                  <span><b>Otro</b><small>Un perfil diferente de PYME</small></span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="1">
+                <legend>¿Para qué necesitas financiamiento?</legend>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Inventario" checked />
+                  <span>Inventario</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Expansión" />
+                  <span>Expansión</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Capital de trabajo" />
+                  <span>Capital de trabajo</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Equipo" />
+                  <span>Equipo</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Marketing" />
+                  <span>Marketing</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step amount-step" data-step="2">
+                <legend>¿Cuánto necesitas?</legend>
+                <div class="amount-control">
+                  <input
+                    id="amountRange"
+                    type="range"
+                    name="amount"
+                    min="50000"
+                    max="1000000"
+                    step="50000"
+                    value="250000"
+                  />
+                  <output id="amountOutput" for="amountRange">$250,000</output>
+                  <div class="amount-markers">
+                    <span>$50k</span>
+                    <span>$500k</span>
+                    <span>$1M</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="3">
+                <legend>¿Cuánto tiempo lleva operando tu negocio?</legend>
+                <label class="select-card">
+                  <input type="radio" name="age" value="Menos de 1 año" checked />
+                  <span>Menos de 1 año</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="age" value="1-2 años" />
+                  <span>1-2 años</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="age" value="3+ años" />
+                  <span>3+ años</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="4">
+                <legend>¿Cuánto facturas mensualmente?</legend>
+                <label class="select-card">
+                  <input type="radio" name="revenue" value="Menos de 50k" checked />
+                  <span>Menos de 50k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="revenue" value="50k-200k" />
+                  <span>50k-200k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="revenue" value="200k-500k" />
+                  <span>200k-500k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="revenue" value="500k+" />
+                  <span>500k+</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="5">
+                <legend>¿Has solicitado crédito antes?</legend>
+                <label class="select-card">
+                  <input type="radio" name="history" value="Sí" checked />
+                  <span>Sí</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="history" value="No" />
+                  <span>No</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="6">
+                <legend>¿Cómo consideras tu historial crediticio?</legend>
+                <label class="select-card">
+                  <input type="radio" name="credit" value="Bueno" checked />
+                  <span>Bueno</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="credit" value="Regular" />
+                  <span>Regular</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="credit" value="Malo" />
+                  <span>Malo</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="credit" value="No lo sé" />
+                  <span>No lo sé</span>
+                </label>
+              </fieldset>
+
+              <div class="form-actions">
+                <button class="button button-ghost" id="backButton" type="button" disabled>
+                  Atrás
+                </button>
+                <button class="button button-primary" id="nextButton" type="button">
+                  Continuar
+                </button>
+              </div>
+            </form>
+
+            <div class="loading-state" id="loadingState" hidden>
+              <div class="pulse-orbit"></div>
+              <p>Analizando opciones para tu negocio...</p>
+              <div class="loading-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section" id="resultados" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Resultados personalizados</p>
+          <h2 id="resultsHeadline">Encontramos opciones compatibles con tu perfil.</h2>
+        </div>
+        <div class="health-card" id="healthCard"></div>
+        <div class="results-toolbar">
+          <div class="results-summary" id="resultsSummary"></div>
+          <label>
+            Ordenar por
+            <select id="sortSelect">
+              <option value="match">Mayor compatibilidad</option>
+              <option value="rate">Menor tasa</option>
+              <option value="speed">Respuesta más rápida</option>
+              <option value="requirements">Menos requisitos</option>
+            </select>
+          </label>
+        </div>
+        <div class="results-grid" id="resultsGrid"></div>
+        <div class="lead-capture">
+          <div>
+            <h3>¿Quieres guardar estas opciones y recibir nuevas recomendaciones?</h3>
+            <p>Te enviamos el resumen por WhatsApp o email para revisarlo con calma.</p>
+          </div>
+          <form class="lead-form">
+            <label>
+              WhatsApp
+              <input type="tel" placeholder="55 1234 5678" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="tu@negocio.com" />
+            </label>
+            <button class="button button-primary" type="button">Guardar opciones</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
