@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClaraCapital | Comparador de financiamiento empresarial</title>
+    <meta
+      name="description"
+      content="Compara opciones de financiamiento empresarial de forma clara, rápida y sin complicaciones."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230F172A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='34' font-weight='700' fill='white'%3EC%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="ClaraCapital inicio">
+        <span class="brand-mark">C</span>
+        <span>ClaraCapital</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#comparador">Comparador</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="header-cta" href="#comparador">Comparar</a>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">Claridad financiera para crecer</p>
+          <h1>Encuentra el financiamiento correcto para tu negocio.</h1>
+          <p class="hero-subtitle">
+            Compara opciones empresariales de forma clara, rápida y sin complicaciones.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#comparador">Comparar opciones</a>
+            <a class="button button-ghost" href="#como-funciona">Cómo funciona</a>
+          </div>
+          <div class="trust-strip" aria-label="Indicadores de confianza">
+            <span><strong>✓</strong> Gratis</span>
+            <span><strong>✓</strong> Sin compromiso</span>
+            <span><strong>✓</strong> No afecta tu historial</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Vista previa de comparación financiera">
+          <div class="signal-card main-signal">
+            <div>
+              <span class="small-label">Mejor coincidencia</span>
+              <strong>Capital para inventario</strong>
+            </div>
+            <span class="match-score">94%</span>
+          </div>
+          <div class="dashboard-card">
+            <div class="dashboard-top">
+              <span>Opciones estimadas</span>
+              <strong>3</strong>
+            </div>
+            <div class="rate-row">
+              <span>Tasa desde</span>
+              <strong>16%</strong>
+            </div>
+            <div class="range-bars">
+              <span style="--bar: 82%"></span>
+              <span style="--bar: 66%"></span>
+              <span style="--bar: 48%"></span>
+            </div>
+            <div class="approval-card">
+              <span class="status-dot"></span>
+              Respuesta estimada en 48 hrs
+            </div>
+          </div>
+          <div class="floating-note note-left">Requisitos básicos</div>
+          <div class="floating-note note-right">Sin filas, sin vueltas</div>
+        </div>
+      </section>
+
+      <section class="section" id="como-funciona">
+        <div class="section-heading">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>Tres pasos para decidir con más calma.</h2>
+        </div>
+        <div class="steps-grid">
+          <article class="info-card">
+            <span class="icon-box">⌂</span>
+            <h3>Describe tu negocio</h3>
+            <p>Cuéntanos qué necesitas y el rango aproximado de financiamiento.</p>
+          </article>
+          <article class="info-card">
+            <span class="icon-box">⌕</span>
+            <h3>Analizamos opciones</h3>
+            <p>Ordenamos alternativas por claridad, requisitos y tiempo de respuesta.</p>
+          </article>
+          <article class="info-card">
+            <span class="icon-box">✓</span>
+            <h3>Elige la mejor alternativa</h3>
+            <p>Compara antes de comprometerte y guarda tus opciones favoritas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section benefits-section">
+        <div class="section-heading">
+          <p class="eyebrow">Beneficios</p>
+          <h2>Menos fricción, mejores decisiones.</h2>
+        </div>
+        <div class="benefits-grid">
+          <article>
+            <span>Ahorra tiempo</span>
+            <p>Encuentra opciones en minutos.</p>
+          </article>
+          <article>
+            <span>Más claridad</span>
+            <p>Entiende tasas y requisitos fácilmente.</p>
+          </article>
+          <article>
+            <span>Mejores decisiones</span>
+            <p>Compara alternativas antes de comprometerte.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparator-section" id="comparador">
+        <div class="comparator-shell">
+          <div class="comparator-intro">
+            <p class="eyebrow">Comparador beta</p>
+            <h2>Responde una pregunta a la vez.</h2>
+            <p>
+              El flujo está diseñado para reducir estrés: primero mostramos valor, después
+              pedimos tus datos solo si quieres guardar las opciones.
+            </p>
+          </div>
+
+          <div class="comparator-panel" aria-live="polite">
+            <div class="progress-wrap">
+              <span id="progressLabel">Pregunta 1 de 3</span>
+              <div class="progress-track"><span id="progressBar"></span></div>
+            </div>
+
+            <form id="compareForm" class="question-card">
+              <fieldset class="question-step active" data-step="0">
+                <legend>¿Qué necesitas?</legend>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Inventario" checked />
+                  <span>Inventario</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Capital" />
+                  <span>Capital</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Expansión" />
+                  <span>Expansión</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="need" value="Equipo" />
+                  <span>Equipo</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="1">
+                <legend>¿Cuánto necesitas?</legend>
+                <label class="select-card">
+                  <input type="radio" name="amount" value="$50k-100k" checked />
+                  <span>$50k-100k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="amount" value="$100k-250k" />
+                  <span>$100k-250k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="amount" value="$250k-500k" />
+                  <span>$250k-500k</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="amount" value="$500k+" />
+                  <span>$500k+</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="question-step" data-step="2">
+                <legend>¿Has solicitado crédito antes?</legend>
+                <label class="select-card">
+                  <input type="radio" name="history" value="Sí" checked />
+                  <span>Sí</span>
+                </label>
+                <label class="select-card">
+                  <input type="radio" name="history" value="No" />
+                  <span>No</span>
+                </label>
+              </fieldset>
+
+              <div class="form-actions">
+                <button class="button button-ghost" id="backButton" type="button" disabled>
+                  Atrás
+                </button>
+                <button class="button button-primary" id="nextButton" type="button">
+                  Continuar
+                </button>
+              </div>
+            </form>
+
+            <div class="loading-state" id="loadingState" hidden>
+              <div class="pulse-orbit"></div>
+              <p>Analizando opciones para tu negocio...</p>
+              <div class="loading-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section" id="resultados" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Resultados</p>
+          <h2>Opciones recomendadas para tu negocio.</h2>
+        </div>
+        <div class="results-summary" id="resultsSummary"></div>
+        <div class="results-grid" id="resultsGrid"></div>
+        <div class="lead-capture">
+          <div>
+            <h3>¿Quieres guardar estas opciones?</h3>
+            <p>Te enviamos el resumen por WhatsApp o email para revisarlo con calma.</p>
+          </div>
+          <form class="lead-form">
+            <label>
+              WhatsApp
+              <input type="tel" placeholder="55 1234 5678" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="tu@negocio.com" />
+            </label>
+            <button class="button button-primary" type="button">Guardar opciones</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Preguntas frecuentes.</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>¿Es gratis?</summary>
+            <p>Sí. La comparación inicial no tiene costo ni compromiso.</p>
+          </details>
+          <details>
+            <summary>¿Afecta mi historial?</summary>
+            <p>No. Este flujo es informativo y no realiza una consulta formal de buró.</p>
+          </details>
+          <details>
+            <summary>¿Cómo seleccionan las opciones?</summary>
+            <p>Usamos tu necesidad, monto y contexto para ordenar alternativas simuladas del MVP.</p>
+          </details>
+          <details>
+            <summary>¿Qué financieras participan?</summary>
+            <p>En esta beta usamos opciones demo para validar claridad, confianza y conversión.</p>
+          </details>
+          <details>
+            <summary>¿Necesito historial crediticio?</summary>
+            <p>No siempre. Algunas alternativas pueden evaluar ventas, antigüedad y flujo del negocio.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>ClaraCapital</span>
+      <div>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:hola@claracapital.mx">Contacto</a>
+        <a href="#inicio">Privacidad</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
