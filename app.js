@@ -198,6 +198,7 @@ if (compareForm) {
       .map(
         (option) => `
           <article class="result-card recommendation-card">
+            <span class="rec-label">Recomendado para ti</span>
             <header>
               <div>
                 <h3>${option.name}</h3>
