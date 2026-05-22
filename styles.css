@@ -127,6 +127,26 @@ input {
   text-transform: uppercase;
 }
 
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  color: #047857;
+  background: var(--soft-green);
+  border-radius: 999px;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 999px;
+  background: var(--green);
+}
+
 h1,
 h2,
 h3 {
@@ -142,6 +162,10 @@ h1 {
   font-size: clamp(2.55rem, 4.8vw, 3.5rem);
   letter-spacing: 0;
   font-weight: 650;
+}
+
+.text-green {
+  color: var(--green);
 }
 
 h2 {
