@@ -40,6 +40,17 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScneLTpeTRr-SilI3cWBavuOlMuaoYv4e-Bmbk8I13pgMYx7g/viewform?embedded=true"
+      width="640"
+      height="1640"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      >Cargando…</iframe
+    >
+
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="CrediAliado inicio">
         <span class="brand-mark">C</span>
@@ -305,7 +316,7 @@
           </label>
         </div>
         <div class="results-grid" id="resultsGrid"></div>
-        <div class="lead-capture">
+        <div class="lead-capture" hidden>
           <div>
             <h3>
               ¿Quieres guardar estas opciones y recibir nuevas recomendaciones?
@@ -331,6 +342,61 @@
         </div>
       </section>
     </main>
+
+    <dialog class="contact-dialog" id="contactDialog">
+      <form class="contact-form" id="contactForm" method="dialog">
+        <div class="contact-head">
+          <div>
+            <p class="eyebrow">Solicitud de contacto</p>
+            <h2>Guarda tus opciones y recibe seguimiento</h2>
+            <p id="contactLenderLabel">
+              Te enviaremos el resumen por WhatsApp o email para revisarlo con
+              calma.
+            </p>
+          </div>
+          <button
+            class="icon-button"
+            id="closeContactDialog"
+            type="button"
+            aria-label="Cerrar"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="contact-fields">
+          <label>
+            WhatsApp
+            <input
+              id="contactPhone"
+              name="phone"
+              type="tel"
+              placeholder="55 1234 5678"
+              autocomplete="tel"
+              required
+            />
+          </label>
+          <label>
+            Email
+            <input
+              id="contactEmail"
+              name="email"
+              type="email"
+              placeholder="tu@negocio.com"
+              autocomplete="email"
+              required
+            />
+          </label>
+        </div>
+        <div class="contact-actions">
+          <button class="button button-ghost" type="button" id="cancelContact">
+            Cancelar
+          </button>
+          <button class="button button-primary" type="submit">
+            Enviar datos
+          </button>
+        </div>
+      </form>
+    </dialog>
 
     <a
       class="feedback-trigger"

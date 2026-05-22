@@ -15,7 +15,12 @@ if (compareForm) {
   const sortSelect = document.querySelector("#sortSelect");
   const amountRange = document.querySelector("#amountRange");
   const amountOutput = document.querySelector("#amountOutput");
-  const feedbackUrl = document.querySelector(".feedback-trigger")?.href;
+  const contactDialog = document.querySelector("#contactDialog");
+  const contactForm = document.querySelector("#contactForm");
+  const contactLenderLabel = document.querySelector("#contactLenderLabel");
+  const closeContactDialog = document.querySelector("#closeContactDialog");
+  const cancelContact = document.querySelector("#cancelContact");
+  const feedbackUrl = document.querySelector(".feedback-trigger")?.href || "#";
   const googleFormUrl =
     "https://docs.google.com/forms/d/e/1FAIpQLScneLTpeTRr-SilI3cWBavuOlMuaoYv4e-Bmbk8I13pgMYx7g/formResponse";
   const googleFormFields = {
@@ -27,6 +32,8 @@ if (compareForm) {
     history: "entry.1160360491",
     credit: "entry.1382084961",
     lender: "entry.804139220",
+    email: "entry.1838281669",
+    phone: "entry.573859791",
   };
 
   const options = [
@@ -86,6 +93,8 @@ if (compareForm) {
 
   let currentStep = 0;
   let latestResults = [];
+  let selectedContactButton = null;
+  let selectedLender = "";
 
   function currency(value) {
     return new Intl.NumberFormat("es-MX", {
@@ -287,34 +296,74 @@ if (compareForm) {
   }
 
   if (resultsGrid) {
-    resultsGrid.addEventListener("click", async (event) => {
+    resultsGrid.addEventListener("click", (event) => {
       const contactButton = event.target.closest("[data-lender]");
       if (!contactButton) return;
 
-      const originalText = contactButton.textContent;
-      contactButton.disabled = true;
-      contactButton.textContent = "Enviando...";
+      selectedContactButton = contactButton;
+      selectedLender = contactButton.dataset.lender;
 
-      try {
-        await sendGoogleFormResponse({
-          ...getFormData(),
-          lender: contactButton.dataset.lender,
-        });
-        contactButton.textContent = "Enviado";
-        const contactMessage = contactButton
+      if (contactLenderLabel) {
+        contactLenderLabel.textContent = `Deja tus datos para que demos seguimiento con ${selectedLender}.`;
+      }
+
+      contactForm?.reset();
+      contactDialog?.showModal();
+    });
+  }
+
+  function closeContactModal() {
+    contactDialog?.close();
+  }
+
+  closeContactDialog?.addEventListener("click", closeContactModal);
+  cancelContact?.addEventListener("click", closeContactModal);
+
+  contactDialog?.addEventListener("click", (event) => {
+    if (event.target === contactDialog) {
+      closeContactModal();
+    }
+  });
+
+  contactForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const originalText = submitButton.textContent;
+    const contactData = new FormData(contactForm);
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Enviando...";
+
+    try {
+      await sendGoogleFormResponse({
+        ...getFormData(),
+        lender: selectedLender,
+        email: contactData.get("email"),
+        phone: contactData.get("phone"),
+      });
+
+      if (selectedContactButton) {
+        selectedContactButton.textContent = "Enviado";
+        selectedContactButton.disabled = true;
+
+        const contactMessage = selectedContactButton
           .closest(".recommendation-card")
           ?.querySelector(".contact-message");
 
         if (contactMessage) {
           contactMessage.hidden = false;
         }
-      } catch (error) {
-        console.warn("No se pudo enviar el formulario a Google Forms.", error);
-        contactButton.disabled = false;
-        contactButton.textContent = originalText;
       }
-    });
-  }
+
+      closeContactModal();
+    } catch (error) {
+      console.warn("No se pudo enviar el formulario a Google Forms.", error);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
+  });
 
   if (amountRange) {
     amountRange.addEventListener("input", updateAmount);
