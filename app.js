@@ -213,7 +213,7 @@ if (compareForm) {
               <li>Rating de usuarios: ${option.rating}</li>
             </ul>
             <p class="smart-explanation">${option.explanation}</p>
-            <button class="button button-primary" type="button">Ver opción</button>
+            <button class="button button-primary" type="button">Contactame</button>
           </article>
         `
       )
