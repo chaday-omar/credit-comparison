@@ -15,6 +15,19 @@ if (compareForm) {
   const sortSelect = document.querySelector("#sortSelect");
   const amountRange = document.querySelector("#amountRange");
   const amountOutput = document.querySelector("#amountOutput");
+  const feedbackUrl = document.querySelector(".feedback-trigger")?.href;
+  const googleFormUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLScneLTpeTRr-SilI3cWBavuOlMuaoYv4e-Bmbk8I13pgMYx7g/formResponse";
+  const googleFormFields = {
+    business: "entry.366340186",
+    need: "entry.1982992272",
+    amount: "entry.1127825163",
+    age: "entry.1965221083",
+    revenue: "entry.1626570624",
+    history: "entry.1160360491",
+    credit: "entry.1382084961",
+    lender: "entry.804139220",
+  };
 
   const options = [
     {
@@ -110,6 +123,21 @@ if (compareForm) {
       history: formData.get("history"),
       credit: formData.get("credit"),
     };
+  }
+
+  async function sendGoogleFormResponse(data) {
+    const googleData = new URLSearchParams();
+
+    Object.entries(googleFormFields).forEach(([field, entryId]) => {
+      googleData.set(entryId, data[field] ?? "");
+    });
+    googleData.set("submit", "Submit");
+
+    await fetch(googleFormUrl, {
+      method: "POST",
+      body: googleData,
+      mode: "no-cors",
+    });
   }
 
   function detectProfile(data) {
@@ -213,7 +241,11 @@ if (compareForm) {
               <li>Rating de usuarios: ${option.rating}</li>
             </ul>
             <p class="smart-explanation">${option.explanation}</p>
-            <button class="button button-primary" type="button">Contactame</button>
+            <button class="button button-primary" type="button" data-lender="${option.name}">Contactame</button>
+            <div class="contact-message" hidden>
+              <strong>Listo, nos ponemos en contacto contigo.</strong>
+              <a href="${feedbackUrl}" target="_blank" rel="noopener noreferrer">Ayúdanos a mejorar el sitio</a>
+            </div>
           </article>
         `
       )
@@ -252,6 +284,36 @@ if (compareForm) {
 
   if (sortSelect) {
     sortSelect.addEventListener("change", () => sortResults(sortSelect.value));
+  }
+
+  if (resultsGrid) {
+    resultsGrid.addEventListener("click", async (event) => {
+      const contactButton = event.target.closest("[data-lender]");
+      if (!contactButton) return;
+
+      const originalText = contactButton.textContent;
+      contactButton.disabled = true;
+      contactButton.textContent = "Enviando...";
+
+      try {
+        await sendGoogleFormResponse({
+          ...getFormData(),
+          lender: contactButton.dataset.lender,
+        });
+        contactButton.textContent = "Enviado";
+        const contactMessage = contactButton
+          .closest(".recommendation-card")
+          ?.querySelector(".contact-message");
+
+        if (contactMessage) {
+          contactMessage.hidden = false;
+        }
+      } catch (error) {
+        console.warn("No se pudo enviar el formulario a Google Forms.", error);
+        contactButton.disabled = false;
+        contactButton.textContent = originalText;
+      }
+    });
   }
 
   if (amountRange) {
